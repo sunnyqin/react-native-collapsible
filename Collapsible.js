@@ -15,6 +15,7 @@ class Collapsible extends Component {
   static propTypes = {
     align: PropTypes.oneOf(['top', 'center', 'bottom']),
     collapsed: PropTypes.bool,
+    hasScrollContent: PropTypes.bool,
     collapsedHeight: PropTypes.number,
     duration: PropTypes.number,
     easing: PropTypes.oneOfType([
@@ -27,6 +28,7 @@ class Collapsible extends Component {
   static defaultProps = {
     align: 'top',
     collapsed: true,
+    hasScrollContent: false,
     collapsedHeight: 0,
     duration: 300,
     easing: 'easeOutCubic',
@@ -143,7 +145,7 @@ class Collapsible extends Component {
     const { height, contentHeight, measuring, measured } = this.state;
     const hasKnownHeight = !measuring && (measured || collapsed);
     const style = hasKnownHeight && {
-      overflow: 'hidden',
+      overflow: hasScrollContent ? 'scroll' : 'hidden',
       height: height,
     };
     const contentStyle = {};
