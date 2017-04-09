@@ -141,7 +141,7 @@ class Collapsible extends Component {
   };
 
   render() {
-    const { collapsed } = this.props;
+    const { collapsed, hasScrollContent } = this.props;
     const { height, contentHeight, measuring, measured } = this.state;
     const hasKnownHeight = !measuring && (measured || collapsed);
     const style = hasKnownHeight && {
